@@ -10,7 +10,10 @@ var SERVER_URL = 'http://parse.shared.hackreactor.com/chatterbox/classes/message
 
 //This one calls the Parse server to grab data, and sends it to processData
 var getData = function() {
-  $.ajax(SERVER_URL + '?order=-createdAt', {
+  $.ajax({
+    url: SERVER_URL,
+    type: 'GET',
+    data: { order: '-createdAt' },
     contentType: 'application/json',
     success: function(data) {
       processData(data); // eslint-disable-line no-use-before-define
